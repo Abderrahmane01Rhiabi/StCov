@@ -91,7 +91,7 @@ public class Register extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
 
         if(fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),Dashboard.class));
+            startActivity(new Intent(getApplicationContext(),Drawer.class));
             finish();
         }
 
@@ -150,7 +150,7 @@ public class Register extends AppCompatActivity {
                                         Log.d(TAG,"onFailure : "+e.toString());
                                     }
                                 });
-                                startActivity(new Intent(getApplicationContext(),Dashboard.class));
+                                startActivity(new Intent(getApplicationContext(),Drawer.class));
 
                             }
                             else{

@@ -3,5 +3,6 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/aclonica</item>
         <item>@font/aladin</item>
+        <item>@font/glegoo_bold</item>
     </array>
 </resources>

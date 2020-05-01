@@ -24,12 +24,13 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-public class Dashboard extends AppCompatActivity {
+//public class Dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    public class Profile extends AppCompatActivity  {
     public static final String TAG = "Activity_Register";
     FirebaseAuth fAuth;
     FirebaseFirestore fStor;
-    Button resendCode,changeProfile,button;
-    TextView verifyMsg,firstName,lastName,email;
+    Button resendCode, changeProfile, button;
+    TextView verifyMsg, firstName, lastName, email;
     FirebaseUser user;
     StorageReference storageReference;
     String userId;
@@ -39,13 +40,12 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        resendCode = findViewById(R.id.resendCode);
+       resendCode = findViewById(R.id.resendCode);
         verifyMsg = findViewById(R.id.verifyMsg);
         firstName = findViewById(R.id.firstName);
         lastName = findViewById(R.id.lastName);
         email = findViewById(R.id.email);
-        changeProfile = findViewById(R.id.changeProfile);
-        button = findViewById(R.id.button);
+
 
         resendCode = findViewById(R.id.resendCode);
         verifyMsg = findViewById(R.id.verifyMsg);
@@ -54,14 +54,6 @@ public class Dashboard extends AppCompatActivity {
         fStor = FirebaseFirestore.getInstance();
 
         storageReference = FirebaseStorage.getInstance().getReference();
-
-        //     StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
-        //   profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-        //     @Override
-        //   public void onSuccess(Uri uri) {
-        //     Picasso.get().load(uri).into(profileImage);
-        //     }
-        //});
 
 
         userId = fAuth.getCurrentUser().getUid();
@@ -103,18 +95,6 @@ public class Dashboard extends AppCompatActivity {
             }
         }
     });
-
-        changeProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // open gallery
-                //Intent i = new Intent(v.getContext(),EditProfile.class);
-               // i.putExtra("firstame",firstName.getText().toString());
-               // i.putExtra("email",email.getText().toString());
-               // i.putExtra("lastname",lastName.getText().toString());
-               //   startActivity(i);
-            }
-        });
 
 }
 

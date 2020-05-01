@@ -22,10 +22,15 @@
     <string name="verify_now">Verify Now</string>
     <string name="your_last_name">Your Last Name</string>
     <string name="email">Email</string>
-    <string name="phone_email">Phone Email</string>
+    <string name="phone_email">Your Email</string>
     <string name="todo">TODO</string>
     <string name="welcome">Welcome</string>
     <string name="signup_to_start_with_our_app">SignUp To Start With Our App</string>
-
+    <string name="drawerOpen">drawerOpen</string>
+    <string name="drawerClose">drawerClose</string>
+    <string name="close">close</string>
+    <string name="open">open</string>
+    <string name="email_not_verified">Email Not Verified !</string>
+    <string name="your_profile">Your Profile</string>
 
 </resources>
