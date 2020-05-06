@@ -49,10 +49,10 @@ public class Register extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_register);
 
-        email = findViewById(R.id.email);
-        firstname = findViewById(R.id.firstname);
-        lastname = findViewById(R.id.lastname);
-        pwd = findViewById(R.id.password);
+        email = findViewById(R.id.Mail);
+        firstname = findViewById(R.id.Firstname);
+        lastname = findViewById(R.id.Lastname);
+        pwd = findViewById(R.id.Password);
         signup_btn = findViewById(R.id.signup);
         callLogin = findViewById(R.id.signin);
         img = findViewById(R.id.logo_image);
@@ -90,8 +90,9 @@ public class Register extends AppCompatActivity {
         fStor = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
 
+        //PROBLEM BETWEEN DRAWER AND REGISTER
         if(fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),Drawer.class));
+            startActivity(new Intent(getApplicationContext(),Profile.class));
             finish();
         }
 
@@ -102,8 +103,8 @@ public class Register extends AppCompatActivity {
                 if (!validateEmail() | !validateFirstname() | !validateLastname() | !validatePassword()) {
                     return;
                 } else {
-                    final String nom = firstname.getEditText().getText().toString();
-                    final String prenom = lastname.getEditText().getText().toString();
+                    final String  prenom = firstname.getEditText().getText().toString();
+                    final String nom = lastname.getEditText().getText().toString();
                     final String mail = email.getEditText().getText().toString();
                     String password = pwd.getEditText().getText().toString();
 
@@ -135,8 +136,8 @@ public class Register extends AppCompatActivity {
                                 userID = fAuth.getCurrentUser().getUid();
                                 DocumentReference documentReference = fStor.collection("users").document(userID);
                                 Map<String,Object> user = new HashMap<>();
-                                user.put("firstname",nom);
-                                user.put("lastname",prenom);
+                                user.put("firstname",prenom);
+                                user.put("lastname",nom);
                                 user.put("email",mail);
                                 user.put("role","user");
                                 documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -150,8 +151,7 @@ public class Register extends AppCompatActivity {
                                         Log.d(TAG,"onFailure : "+e.toString());
                                     }
                                 });
-                                startActivity(new Intent(getApplicationContext(),Drawer.class));
-
+                              startActivity(new Intent(getApplicationContext(),Profile.class));
                             }
                             else{
                                 Toast.makeText(Register.this, "Error ! "+ task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -161,18 +161,8 @@ public class Register extends AppCompatActivity {
                     });
                       
 
-                        
-                    
 
-                   // UserHelperClass helperClass = new UserHelperClass(nom, prenom, mail, password);
-                    //Scanner s = new Scanner(System.in);
-                    //System.out.println(mail);
-                    //String[] m = mail.split("@");
-                    //for(String a: m) {
-                      //  System.out.println(a);
-                    //}
-                    //System.out.println(m[0]);
-                    //reference.child(m[0]).setValue(helperClass);
+
                 }
             }
         });

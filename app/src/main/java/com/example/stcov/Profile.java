@@ -1,10 +1,12 @@
 package com.example.stcov;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,17 +25,19 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 //public class Dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    public class Profile extends AppCompatActivity  {
+    public class Profile extends AppCompatActivity   {
     public static final String TAG = "Activity_Register";
     FirebaseAuth fAuth;
     FirebaseFirestore fStor;
-    Button resendCode, changeProfile, button;
+    Button resendCode, settings, home;
     TextView verifyMsg, firstName, lastName, email;
     FirebaseUser user;
     StorageReference storageReference;
     String userId;
+    ImageView profileImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +48,11 @@ import com.google.firebase.storage.StorageReference;
         verifyMsg = findViewById(R.id.verifyMsg);
         firstName = findViewById(R.id.firstName);
         lastName = findViewById(R.id.lastName);
-        email = findViewById(R.id.email);
+        email = findViewById(R.id.Email);
+        profileImage = findViewById(R.id.profileImage);
+
+        home = findViewById(R.id.btn_home);
+        settings = findViewById(R.id.btn_set);
 
 
         resendCode = findViewById(R.id.resendCode);
@@ -54,7 +62,6 @@ import com.google.firebase.storage.StorageReference;
         fStor = FirebaseFirestore.getInstance();
 
         storageReference = FirebaseStorage.getInstance().getReference();
-
 
         userId = fAuth.getCurrentUser().getUid();
         user = fAuth.getCurrentUser();
@@ -81,22 +88,50 @@ import com.google.firebase.storage.StorageReference;
             });
         }
 
+        System.out.println("Avant");
         DocumentReference documentReference = fStor.collection("users").document(userId);
-    documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+        System.out.println("De dans");
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
         @Override
         public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-            if(documentSnapshot.exists()){
+          if(documentSnapshot.exists()){
+                System.out.println("Acceder 1");
                 email.setText(documentSnapshot.getString("email"));
                 firstName.setText(documentSnapshot.getString("firstname"));
                 lastName.setText(documentSnapshot.getString("lastname"));
-
+                System.out.println("Acceder 2");
             }else {
                 Log.d(TAG, "onEvent: Document do not exists");
             }
         }
     });
+        System.out.println("Apres");
 
-}
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+             Intent i = new Intent(v.getContext(),Settings.class);
+             i.putExtra("prenom",firstName.getText().toString());
+             i.putExtra("nom",lastName.getText().toString());
+             i.putExtra("mail",email.getText().toString());
+             startActivity(i);
+
+            }
+        });
+
+
+        StorageReference profileRef = storageReference.child("users/"+userId+"/profile.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(profileImage);
+
+            }
+        });
+
+
+    }
+
 
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();//logout

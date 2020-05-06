@@ -25,6 +25,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class Login extends AppCompatActivity{
 
@@ -34,6 +38,11 @@ public class Login extends AppCompatActivity{
     TextInputLayout email,pwd;
     ProgressBar progressBar2;
     FirebaseAuth fAuth;
+    FirebaseUser user;
+    StorageReference storageReference;
+    FirebaseFirestore fStor;
+    public String role;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +60,14 @@ public class Login extends AppCompatActivity{
         forget_pwd = findViewById(R.id.forget_pwd);
 
         progressBar2 = findViewById(R.id.progressBar2);
+
         fAuth = FirebaseAuth.getInstance();
+        fStor = FirebaseFirestore.getInstance();
+
+        storageReference = FirebaseStorage.getInstance().getReference();
+
+        user = fAuth.getCurrentUser();
+
 
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,11 +82,15 @@ public class Login extends AppCompatActivity{
 
                 //authentification de user
                 fAuth.signInWithEmailAndPassword(mail,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+
+
+
                             Toast.makeText(Login.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),Drawer.class));
+                            startActivity(new Intent(getApplicationContext(),Profile.class));
                         }
                         else{
                             Toast.makeText(Login.this, "Error ! "+ task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -158,6 +178,7 @@ public class Login extends AppCompatActivity{
             pwd.setError("Field cannot be empty");
             return false;
         }
+
 
         else{
             pwd.setError(null);
