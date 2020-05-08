@@ -41,6 +41,7 @@ public class Login extends AppCompatActivity{
     FirebaseUser user;
     StorageReference storageReference;
     FirebaseFirestore fStor;
+    String userId;
     public String role;
 
     @Override
@@ -63,9 +64,7 @@ public class Login extends AppCompatActivity{
 
         fAuth = FirebaseAuth.getInstance();
         fStor = FirebaseFirestore.getInstance();
-
         storageReference = FirebaseStorage.getInstance().getReference();
-
         user = fAuth.getCurrentUser();
 
 
@@ -86,11 +85,9 @@ public class Login extends AppCompatActivity{
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-
-
-
-                            Toast.makeText(Login.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),Profile.class));
+                            System.out.println(task.getResult().getUser());
+                                Toast.makeText(Login.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(),Help.class));
                         }
                         else{
                             Toast.makeText(Login.this, "Error ! "+ task.getException().getMessage(), Toast.LENGTH_SHORT).show();

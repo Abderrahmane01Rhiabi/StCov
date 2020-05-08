@@ -8,13 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -44,8 +41,6 @@ public class ProfileAdmin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_admin);
 
-        resendCode = findViewById(R.id.resendCode);
-        verifyMsg = findViewById(R.id.verifyMsg);
         firstName = findViewById(R.id.firstName);
         lastName = findViewById(R.id.lastName);
         email = findViewById(R.id.Email);
@@ -67,27 +62,7 @@ public class ProfileAdmin extends AppCompatActivity {
         userId = fAuth.getCurrentUser().getUid();
         user = fAuth.getCurrentUser();
 
-        if (!user.isEmailVerified()) {
-            verifyMsg.setVisibility(View.VISIBLE);
-            resendCode.setVisibility(View.VISIBLE);
 
-            resendCode.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(final View v) {
-                    user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(v.getContext(), "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.d(TAG, "onFailure: Email not sent " + e.getMessage());
-                        }
-                    });
-                }
-            });
-        }
 
         System.out.println("Avant");
         DocumentReference documentReference = fStor.collection("users").document(userId);
@@ -96,11 +71,12 @@ public class ProfileAdmin extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 if(documentSnapshot.exists()){
-                    System.out.println("Acceder 1");
+                    System.out.println("Acceder 1 admin");
                     email.setText(documentSnapshot.getString("email"));
                     firstName.setText(documentSnapshot.getString("firstname"));
                     lastName.setText(documentSnapshot.getString("lastname"));
-                    System.out.println("Acceder 2");
+                    String x = documentSnapshot.getString("role");
+                    System.out.println(x);
                 }else {
                     Log.d(TAG, "onEvent: Document do not exists");
                 }
@@ -130,6 +106,31 @@ public class ProfileAdmin extends AppCompatActivity {
             }
         });
 
+        //    fStor.collection("users")
+          //      .whereEqualTo("role","user").get()
+        //      .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        //          @Override
+        //          public void onComplete(@NonNull Task<QuerySnapshot> task) {
+        //              if(task.isSuccessful()){
+        //                  for(QueryDocumentSnapshot doc : task.getResult()){
+        //                      Log.d("TAG",doc.getId() + " => "+doc.getData());
+        //                  }
+        //              }
+        //              else{
+        //                  Log.d("TAG","Error getting document : ", task.getException());
+        //              }
+        //          }
+        //      });
+
+
+        Users.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ProfileAdmin.this,ShowData.class);
+                startActivity(i);
+           //  finish();
+            }
+        });
 
     }
 

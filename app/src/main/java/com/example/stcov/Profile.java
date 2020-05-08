@@ -44,7 +44,7 @@ import com.squareup.picasso.Picasso;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-       resendCode = findViewById(R.id.resendCode);
+        resendCode = findViewById(R.id.resendCode);
         verifyMsg = findViewById(R.id.verifyMsg);
         firstName = findViewById(R.id.firstName);
         lastName = findViewById(R.id.lastName);
@@ -60,9 +60,7 @@ import com.squareup.picasso.Picasso;
 
         fAuth = FirebaseAuth.getInstance();
         fStor = FirebaseFirestore.getInstance();
-
         storageReference = FirebaseStorage.getInstance().getReference();
-
         userId = fAuth.getCurrentUser().getUid();
         user = fAuth.getCurrentUser();
 
@@ -94,14 +92,14 @@ import com.squareup.picasso.Picasso;
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
         @Override
         public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-          if(documentSnapshot.exists()){
-                System.out.println("Acceder 1");
-                email.setText(documentSnapshot.getString("email"));
-                firstName.setText(documentSnapshot.getString("firstname"));
-                lastName.setText(documentSnapshot.getString("lastname"));
-                System.out.println("Acceder 2");
+          if(!documentSnapshot.exists()){
+              Log.d(TAG, "onEvent: Document do not exists");
             }else {
-                Log.d(TAG, "onEvent: Document do not exists");
+              System.out.println("Acceder 1");
+              email.setText(documentSnapshot.getString("email"));
+              firstName.setText(documentSnapshot.getString("firstname"));
+              lastName.setText(documentSnapshot.getString("lastname"));
+              System.out.println("Acceder 2");
             }
         }
     });
