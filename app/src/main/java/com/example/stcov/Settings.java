@@ -17,11 +17,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -111,8 +114,44 @@ public class Settings extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(Settings.this,"Profile Updated",Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(),Profile.class));
-                                finish();
+
+
+                                DocumentReference docRef = fStor.collection("users").document(userId);
+                                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                        if (task.isSuccessful()) {
+                                            DocumentSnapshot document = task.getResult();
+                                            if (document.exists()) {
+                                                String role = document.getString("role");
+                                                Log.d("TAG", "DocumentSnapshot data: " + document.getString("role"));
+                                                if(role.equals("user")){
+                                                    startActivity(new Intent(getApplicationContext(),Profile.class));
+                                                    finish();
+                                                }
+                                                else if(role.equals("admin")){
+                                                    startActivity(new Intent(getApplicationContext(),ProfileAdmin.class));
+                                                    finish();
+                                                }
+                                                else if(role.equals("supperadmin")){
+                                                    startActivity(new Intent(getApplicationContext(),ProfileSupperAdmin.class));
+                                                    finish();
+                                                }
+                                                else{
+                                                    startActivity(new Intent(getApplicationContext(),Help.class));
+                                                    Toast.makeText(Settings.this, "Fatal problem", Toast.LENGTH_SHORT).show();
+                                                }
+                                            } else {
+                                                Log.d("TAG", "No such document");
+                                            }
+                                        } else {
+                                            Log.d("TAG", "get failed with ", task.getException());
+                                        }
+                                    }
+                                });
+
+
+
                             }
                         });
                         Toast.makeText(Settings.this,"Email is Changed",Toast.LENGTH_SHORT).show();

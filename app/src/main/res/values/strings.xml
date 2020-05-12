@@ -35,5 +35,6 @@
     <string name="change_password">Change Password</string>
     <string name="change_email">Change Email</string>
     <string name="todo">TODO</string>
+    <string name="delete">Delete</string>
 
 </resources>

@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:text="Country"
+            android:textColor="#000"
             android:textStyle="bold"
             android:textSize="18sp"/>
         <TextView
@@ -56,6 +57,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:text="Cases"
+            android:textColor="#000"
             android:textStyle="bold"
             android:textSize="18sp"/>
         <TextView
@@ -92,6 +94,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:text="Today Cases"
+            android:textColor="#000"
             android:textStyle="bold"
             android:textSize="18sp"/>
         <TextView
@@ -128,6 +131,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:text="Deaths"
+            android:textColor="#000"
             android:textStyle="bold"
             android:textSize="18sp"/>
         <TextView
@@ -164,6 +168,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:text="Today Deaths"
+            android:textColor="#000"
             android:textStyle="bold"
             android:textSize="18sp"/>
         <TextView
@@ -200,6 +205,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:text="Recovered"
+            android:textColor="#000"
             android:textStyle="bold"
             android:textSize="18sp"/>
         <TextView
@@ -236,6 +242,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:text="Active"
+            android:textColor="#000"
             android:textStyle="bold"
             android:textSize="18sp"/>
         <TextView
@@ -273,6 +280,7 @@
             android:fontFamily="sans-serif-light"
             android:text="Critical"
             android:textStyle="bold"
+            android:textColor="#000"
             android:textSize="18sp"/>
         <TextView
             android:layout_width="fill_parent"

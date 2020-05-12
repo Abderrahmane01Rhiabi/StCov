@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4F7F8"
+    android:background="#fff"
     tools:context=".MainActivity">
 
     <ImageView
@@ -20,10 +20,40 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.781" />
 
+    <ImageView
+        android:id="@+id/img2"
+        android:layout_width="51dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="28dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/carton4" />
+
+    <TextView
+        android:id="@+id/t2"
+        android:layout_width="181dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="92dp"
+        android:fontFamily="@font/aladin"
+        android:orientation="vertical"
+        android:shadowColor="#090909"
+        android:text="@string/stay_at_home"
+        android:textColor="#111112"
+        android:textColorHighlight="#000000"
+        android:textColorHint="#000000"
+        android:textColorLink="#050505"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.586"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/t1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="203dp"
+        android:layout_height="120dp"
         android:layout_marginTop="494dp"
         android:layout_marginBottom="124dp"
         android:ellipsize="middle"
@@ -38,39 +68,10 @@
         android:verticalScrollbarPosition="defaultPosition"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.543"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/t2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="95dp"
-        android:fontFamily="@font/aclonica"
-        android:orientation="vertical"
-        android:shadowColor="#090909"
-        android:text="@string/stay_at_home"
-        android:textColor="#111112"
-        android:textColorHighlight="#000000"
-        android:textColorHint="#000000"
-        android:textColorLink="#050505"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/img2"
-        android:layout_width="51dp"
-        android:layout_height="49dp"
-        android:layout_marginBottom="28dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/carton4"
-        android:contentDescription="@string/todo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

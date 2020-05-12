@@ -53,6 +53,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Total Cases"
+                        android:textColor="#000"
                         android:paddingLeft="10dp"/>
 
                 </LinearLayout>
@@ -69,6 +70,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Recovered"
+                        android:textColor="#000"
                         android:paddingLeft="10dp"/>
 
                 </LinearLayout>
@@ -85,6 +87,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Deaths"
+                        android:textColor="#000"
                         android:paddingLeft="10dp"/>
 
                 </LinearLayout>
@@ -101,6 +104,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Active"
+                        android:textColor="#000"
                         android:paddingLeft="10dp"/>
 
                 </LinearLayout>
@@ -153,6 +157,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="global stats"
+                        android:textColor="#000"
                         android:textAllCaps="true"
                         android:textSize="28sp"
                         android:textStyle="bold"
@@ -180,6 +185,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
                             android:text="Cases"
+                            android:textColor="#000"
                             android:textSize="18sp"/>
                         <TextView
                             android:layout_width="fill_parent"
@@ -188,7 +194,6 @@
                             android:id="@+id/tvCases"
                             android:textAlignment="textEnd"
                             android:textSize="18sp"
-
                             android:textColor="@color/color_one"
                             android:textStyle="bold"
                             android:fontFamily="sans-serif-light"
@@ -215,6 +220,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
                             android:text="Recovored"
+                            android:textColor="#000"
                             android:textSize="18sp"/>
                         <TextView
                             android:layout_width="fill_parent"
@@ -249,6 +255,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
                             android:text="Critical"
+                            android:textColor="#000"
                             android:textSize="18sp"/>
                         <TextView
                             android:layout_width="fill_parent"
@@ -284,6 +291,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
                             android:text="Active"
+                            android:textColor="#000"
                             android:textSize="18sp"/>
                         <TextView
                             android:layout_width="fill_parent"
@@ -319,6 +327,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
                             android:text="Today Cases"
+                            android:textColor="#000"
                             android:textSize="18sp"/>
                         <TextView
                             android:layout_width="fill_parent"
@@ -354,6 +363,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
                             android:text="Total Deaths"
+                            android:textColor="#000"
                             android:textSize="18sp"/>
                         <TextView
                             android:layout_width="fill_parent"
@@ -389,6 +399,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
                             android:text="Today Deaths"
+                            android:textColor="#000"
                             android:textSize="18sp"/>
                         <TextView
                             android:layout_width="fill_parent"
@@ -424,6 +435,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
                             android:text="Affected Countries"
+                            android:textColor="#000"
                             android:textSize="18sp"/>
                         <TextView
                             android:layout_width="fill_parent"

@@ -10,8 +10,8 @@
     <color name="color_two">#E3E0E0</color>
 
     <color name="cases">#FFA726</color>
-    <color name="recovered">#66BB6A</color>
-    <color name="deaths">#EF5350</color>
-    <color name="active">#29B6F6</color>
+    <color name="recovered">#20C127</color>
+    <color name="deaths">#FB221E</color>
+    <color name="active">#0F96D3</color>
 
 </resources>

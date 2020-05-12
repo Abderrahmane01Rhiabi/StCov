@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DataOfCountries"></activity>
+        <activity android:name=".ManageAdmin"></activity>
+        <activity android:name=".ShowData2" />
+        <activity android:name=".ProfileSupperAdmin" />
+        <activity android:name=".DataOfCountries" />
         <activity android:name=".AffectedCountries" />
         <activity android:name=".CovidData" />
         <activity android:name=".ManageUser" />

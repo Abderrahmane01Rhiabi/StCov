@@ -62,6 +62,10 @@ public class Help extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(),ProfileAdmin.class));
                             finish();
                         }
+                        else if(role.equals("supperadmin")){
+                            startActivity(new Intent(getApplicationContext(),ProfileSupperAdmin.class));
+                            finish();
+                        }
                         else{
                             startActivity(new Intent(getApplicationContext(),Help.class));
                             Toast.makeText(Help.this, "Fatal problem", Toast.LENGTH_SHORT).show();

@@ -106,7 +106,7 @@ public class Register extends AppCompatActivity {
                     final String  prenom = firstname.getEditText().getText().toString();
                     final String nom = lastname.getEditText().getText().toString();
                     final String mail = email.getEditText().getText().toString();
-                    String password = pwd.getEditText().getText().toString();
+                    final String password = pwd.getEditText().getText().toString();
 
                     progressBar.setVisibility(View.VISIBLE);
 
