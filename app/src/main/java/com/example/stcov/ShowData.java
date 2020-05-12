@@ -1,5 +1,6 @@
 package com.example.stcov;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -69,18 +70,14 @@ public class ShowData extends AppCompatActivity implements FirestoreAdapter.OnLi
     @Override
     public void onItemClick(DocumentSnapshot snapshot,int position) {
         Log.d("ITEM_CLICK","Clicked the item : "+position+" and the ID : "+snapshot.getId() );
+        Intent i = new Intent(new Intent(getApplicationContext(),ManageUser.class));
+        String uid = snapshot.getId();
+        System.out.println(uid);
+        i.putExtra("uid",uid);
+        startActivity(i);
+        //finish();
     }
 
-    //private class UserViewHolder extends RecyclerView.ViewHolder{
-        //TextView firstname,lastname,email;
-        //  public UserViewHolder(@NonNull View itemView) {
-            //          super(itemView);
-//            firstname = itemView.findViewById(R.id.prenom);
-            //lastname = itemView.findViewById(R.id.nom);
-            //           email = itemView.findViewById(R.id.email);
-
- //      }
-//    }
 
 
 }

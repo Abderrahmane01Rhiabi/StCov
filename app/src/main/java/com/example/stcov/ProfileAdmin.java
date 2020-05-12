@@ -62,6 +62,7 @@ public class ProfileAdmin extends AppCompatActivity {
         userId = fAuth.getCurrentUser().getUid();
         user = fAuth.getCurrentUser();
 
+        System.out.println("user Id = "+userId);
 
 
         System.out.println("Avant");
@@ -132,6 +133,13 @@ public class ProfileAdmin extends AppCompatActivity {
             }
         });
 
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ProfileAdmin.this,CovidData.class);
+                startActivity(i);
+            }
+        });
     }
 
 

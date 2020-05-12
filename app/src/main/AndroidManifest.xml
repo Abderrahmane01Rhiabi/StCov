@@ -9,13 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ManageUser"></activity>
+        <activity android:name=".DataOfCountries"></activity>
+        <activity android:name=".AffectedCountries" />
+        <activity android:name=".CovidData" />
+        <activity android:name=".ManageUser" />
         <activity android:name=".ShowData" />
         <activity android:name=".Help" />
         <activity android:name=".Home" />
         <activity android:name=".ProfileAdmin" />
         <activity android:name=".Settings" />
-        <activity android:name=".Drawer" />
         <activity android:name=".Register" />
         <activity android:name=".Login" />
         <activity android:name=".Profile" />

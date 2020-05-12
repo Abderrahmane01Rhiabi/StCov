@@ -88,6 +88,8 @@ public class Login extends AppCompatActivity{
                             System.out.println(task.getResult().getUser());
                                 Toast.makeText(Login.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getApplicationContext(),Help.class));
+                                progressBar2.setVisibility(View.GONE);
+
                         }
                         else{
                             Toast.makeText(Login.this, "Error ! "+ task.getException().getMessage(), Toast.LENGTH_SHORT).show();

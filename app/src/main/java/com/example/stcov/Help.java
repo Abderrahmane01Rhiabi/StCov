@@ -56,9 +56,11 @@ public class Help extends AppCompatActivity {
                         Log.d("TAG", "DocumentSnapshot data: " + document.getString("role"));
                         if(role.equals("user")){
                             startActivity(new Intent(getApplicationContext(),Profile.class));
+                            finish();
                         }
                         else if(role.equals("admin")){
                             startActivity(new Intent(getApplicationContext(),ProfileAdmin.class));
+                            finish();
                         }
                         else{
                             startActivity(new Intent(getApplicationContext(),Help.class));

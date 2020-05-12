@@ -64,6 +64,8 @@ import com.squareup.picasso.Picasso;
         userId = fAuth.getCurrentUser().getUid();
         user = fAuth.getCurrentUser();
 
+        System.out.println("user Id = "+userId);
+
         if (!user.isEmailVerified()) {
             verifyMsg.setVisibility(View.VISIBLE);
             resendCode.setVisibility(View.VISIBLE);

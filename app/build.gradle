@@ -45,7 +45,13 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'com.firebaseui:firebase-ui-firestore:6.2.1'
     implementation 'android.arch.paging:runtime:2.1.1'
-
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'com.github.blackfizz:eazegraph:1.2.5l@aar'
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.android.volley:volley:1.1.1'
+    implementation 'com.leo.simplearcloader:simplearcloader:1.0.+'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
 }
 
